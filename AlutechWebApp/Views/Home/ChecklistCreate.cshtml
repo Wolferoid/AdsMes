@@ -1,0 +1,141 @@
+﻿@model AdsMes.WEB.Models.ChecklistViewModel
+
+@{
+    ViewBag.Title = "Контрольная карта";
+}
+
+<h2>Контрольная карта</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Conformity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Conformity, new List<SelectListItem> { new SelectListItem { Text = "Соответствует", Value = "Соответствует" },
+                                                                                            new SelectListItem { Text = "Не соответствует", Value = "Не соответствует" } },
+                                                                                            "Выбрать",
+                                                                                            new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Conformity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Top, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Top, new List<SelectListItem> { new SelectListItem { Text = "Да", Value = "Да" },
+                                                                                     new SelectListItem { Text = "Нет", Value = "Нет" } },
+                                                                                     "Выбрать",
+                                                                                     new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Top, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bottom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Bottom, new List<SelectListItem> { new SelectListItem { Text = "Да", Value = "Да" },
+                                                                                        new SelectListItem { Text = "Нет", Value = "Нет" } },
+                                                                                        "Выбрать",
+                                                                                        new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Bottom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Left, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Left, new List<SelectListItem> { new SelectListItem { Text = "Да", Value = "Да" },
+                                                                                      new SelectListItem { Text = "Нет", Value = "Нет" } },
+                                                                                      "Выбрать",
+                                                                                      new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Left, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Right, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Right, new List<SelectListItem> { new SelectListItem { Text = "Да", Value = "Да" },
+                                                                                       new SelectListItem { Text = "Нет", Value = "Нет" } },
+                                                                                       "Выбрать",
+                                                                                       new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Right, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Barcode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Workplace, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Workplace, new List<SelectListItem> { new SelectListItem { Text = "Сборка 1", Value = "Сборка 1" },
+                                                                                            new SelectListItem { Text = "Сборка 2", Value = "Сборка 2" },
+                                                                                            new SelectListItem { Text = "Сборка 3", Value = "Сборка 3" },
+                                                                                            new SelectListItem { Text = "Сборка 4", Value = "Сборка 4" }},
+                                                                                            "Выбрать",
+                                                                                            new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Workplace, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShiftNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ShiftNumber, new List<SelectListItem> { new SelectListItem { Text = "1", Value = "1" },
+                                                                                       new SelectListItem { Text = "2", Value = "2" } },
+                                                                                       "Выбрать",
+                                                                                       new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Right, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Отправить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("На главную", "Index", null, new { @class = "btn btn-info" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<AdsMes.WEB.Models.DrillCardViewModel>
+
+@{
+    ViewBag.Title = "DrillCardViewAll";
+}
+
+<h2>Список замен свёрл</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PairNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpperHead)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LowerHead)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewDrill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SharpenDrill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShiftNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PairNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpperHead)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LowerHead)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Resource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewDrill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SharpenDrill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShiftNumber)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>*@
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("На главную", "Index", null, new { @class = "btn btn-info" })
+</div>
