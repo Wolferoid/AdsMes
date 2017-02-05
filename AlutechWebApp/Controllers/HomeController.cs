@@ -3,6 +3,7 @@ using AutoMapper;
 using Kraft.BLL.DTO;
 using Kraft.BLL.Infrastructure;
 using Kraft.BLL.Interfaces;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace AdsMes.WEB.Controllers
         /// Конструктор
         /// </summary>
         /// <param name="_kraftService"></param>
-        public HomeController (IKraftService _kraftService)
+        public HomeController(IKraftService _kraftService)
         {
             kraftService = _kraftService;
         }
@@ -69,12 +70,15 @@ namespace AdsMes.WEB.Controllers
         /// Просмотр таблицы контрольных карт
         /// </summary>
         /// <returns></returns>
-        public ActionResult ChecklistViewAll()
+        public object ChecklistViewAll(int? page)
         {
             IEnumerable<ChecklistDTO> checklistDtos = kraftService.GetChecklists();
             Mapper.Initialize(cfg => cfg.CreateMap<ChecklistDTO, ChecklistViewModel>());
             var checklists = Mapper.Map<IEnumerable<ChecklistDTO>, List<ChecklistViewModel>>(checklistDtos);
-            return View(checklists);
+
+            int perPage = 10;
+            int pageNumber = page ?? ((checklists.Count / perPage) + 1);
+            return View(checklists.ToPagedList(pageNumber, perPage));
         }
 
         /// <summary>
@@ -113,12 +117,15 @@ namespace AdsMes.WEB.Controllers
         /// Просмотр таблицы карт замены свёрл
         /// </summary>
         /// <returns></returns>
-        public ActionResult DrillCardViewAll()
+        public object DrillCardViewAll(int? page)
         {
             IEnumerable<DrillCardDTO> drillcardDtos = kraftService.GetDrillCards();
             Mapper.Initialize(cfg => cfg.CreateMap<DrillCardDTO, DrillCardViewModel>());
             var drillCards = Mapper.Map<IEnumerable<DrillCardDTO>, List<DrillCardViewModel>>(drillcardDtos);
-            return View(drillCards);
+
+            int perPage = 10;
+            int pageNumber = page ?? ((drillCards.Count / perPage) + 1);
+            return View(drillCards.ToPagedList(pageNumber, perPage));
         }
 
         /// <summary>
@@ -127,7 +134,7 @@ namespace AdsMes.WEB.Controllers
         /// <returns></returns>
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "В разработке...";
 
             return View();
         }
@@ -138,7 +145,7 @@ namespace AdsMes.WEB.Controllers
         /// <returns></returns>
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Контактные данные.";
 
             return View();
         }

@@ -1,4 +1,7 @@
-﻿@model IEnumerable<AdsMes.WEB.Models.ChecklistViewModel>
+﻿@*@model IEnumerable<AdsMes.WEB.Models.ChecklistViewModel>*@
+
+@model PagedList.IPagedList<AdsMes.WEB.Models.ChecklistViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Карты замены свёрл";
@@ -12,40 +15,40 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
+            @Html.DisplayName("ID")
+        </th>
+        <th>            
+            @Html.DisplayName("Дата и Время")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateTime)
+            @Html.DisplayName("Отметка о соответствии")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Conformity)
+            @Html.DisplayName("Расслоение вверху")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Top)
+            @Html.DisplayName("Расслоение  внизу")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Bottom)
+            @Html.DisplayName("Расслоение слева")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Left)
+            @Html.DisplayName("Расслоение справа")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Right)
+            @Html.DisplayName("Длина панели, мм")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Length)
+            @Html.DisplayName("Штрихкод")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Barcode)
+            @Html.DisplayName("Фамилия")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayName("Рабочее место")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Workplace)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShiftNumber)
+            @Html.DisplayName("Номер смены")
         </th>
         <th></th>
     </tr>
@@ -97,6 +100,11 @@
 }
 
 </table>
+
+<div>
+    Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+</div>
+@Html.PagedListPager(Model, page => Url.Action("ChecklistViewAll", new { page }))
 
 <div>
     @Html.ActionLink("На главную", "Index", null, new { @class = "btn btn-info" })

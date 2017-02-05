@@ -1,4 +1,7 @@
-﻿@model IEnumerable<AdsMes.WEB.Models.DrillCardViewModel>
+﻿@*@model IEnumerable<AdsMes.WEB.Models.DrillCardViewModel>*@
+
+@model PagedList.IPagedList<AdsMes.WEB.Models.DrillCardViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "DrillCardViewAll";
@@ -12,37 +15,37 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
+            @Html.DisplayName("ID")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateTime)
+            @Html.DisplayName("Дата и время")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PairNumber)
+            @Html.DisplayName("№ пары")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UpperHead)
+            @Html.DisplayName("Верхняя головка")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LowerHead)
+            @Html.DisplayName("Нижняя головка")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Resource)
+            @Html.DisplayName("Ресурс(количество операций)")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Manufacter)
+            @Html.DisplayName("Производитель")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NewDrill)
+            @Html.DisplayName("Сверло: Новое")
+        </th >
+        <th>
+            @Html.DisplayName("Сверло: Переточка")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SharpenDrill)
+            @Html.DisplayName("Исполнитель")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShiftNumber)
+            @Html.DisplayName("Номер смены")
         </th>
         <th></th>
     </tr>
@@ -91,6 +94,10 @@
 }
 
 </table>
+<div>
+    Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+</div>
+@Html.PagedListPager(Model, page => Url.Action("DrillCardViewAll", new { page }))
 
 <div>
     @Html.ActionLink("На главную", "Index", null, new { @class = "btn btn-info" })
