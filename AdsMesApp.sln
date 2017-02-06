@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdsMes.WEB", "AlutechWebApp\AdsMes.WEB.csproj", "{D6E688C7-EEC0-44B1-B85B-8CE81FD708EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdsMes.WEB", "AdsMes.WEB\AdsMes.WEB.csproj", "{D6E688C7-EEC0-44B1-B85B-8CE81FD708EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kraft.DAL", "Kraft.DAL\Kraft.DAL.csproj", "{073882AD-BFBC-4711-B21B-FFD9B4C6D614}"
 EndProject
