@@ -77,7 +77,22 @@ namespace AdsMes.WEB.Controllers
             var checklists = Mapper.Map<IEnumerable<ChecklistDTO>, List<ChecklistViewModel>>(checklistDtos);
 
             int perPage = 10;
-            int pageNumber = page ?? ((checklists.Count / perPage) + 1);
+            int pageNumber;
+            if (page != null)
+            {
+                pageNumber = (int)page;
+            }
+            else
+            {
+                if (checklists.Count % perPage != 0)
+                {
+                    pageNumber = (checklists.Count / perPage) + 1;
+                }
+                else
+                {
+                    pageNumber = (checklists.Count / perPage);
+                }
+            }
             return View(checklists.ToPagedList(pageNumber, perPage));
         }
 
@@ -124,8 +139,22 @@ namespace AdsMes.WEB.Controllers
             var drillCards = Mapper.Map<IEnumerable<DrillCardDTO>, List<DrillCardViewModel>>(drillcardDtos);
 
             int perPage = 10;
-            int pageNumber = page ?? ((drillCards.Count / perPage) + 1);
-            return View(drillCards.ToPagedList(pageNumber, perPage));
+            int pageNumber;
+            if (page != null)
+            {
+                pageNumber = (int)page;
+            }
+            else
+            {
+                if (drillCards.Count % perPage != 0)
+                {
+                    pageNumber = (drillCards.Count / perPage) + 1;
+                }
+                else
+                {
+                    pageNumber = (drillCards.Count / perPage);
+                }
+            }return View(drillCards.ToPagedList(pageNumber, perPage));
         }
 
         /// <summary>
